@@ -1,5 +1,5 @@
 from vpython import rate, vec, canvas, color
-from structures import Vertex, Edge
+from structure import Vertex, Edge
 
 scene = canvas()
 
