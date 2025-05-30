@@ -20,3 +20,26 @@ edges = [
 dt = 0.01
 g = vec(0, -9.8, 0)
 
+
+while True:
+    rate(100)
+
+    #reset forces
+    for v in vertices:
+        v.force = vec(0, 0, 0) if v.fixed else v.mass * g
+
+    #apply sping force
+    for e in edges:
+        e.apply_force()
+
+    #integrate motion
+    for v in vertices:
+        if not v.fixed:
+            a = v.force / v.mass
+            v.vel += a * dt
+            v.pos += v.vel * dt
+        v.update_visual()
+
+    #update visuals of springs
+    for e in edges:
+        e.update_visual()
